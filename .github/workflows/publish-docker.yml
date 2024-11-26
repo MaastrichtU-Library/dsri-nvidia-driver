@@ -17,10 +17,6 @@ env:
   IMAGE_PUSHED: ghcr.io/maastrichtu-library/dsri-nvidia-driver:latest
 
 jobs:
-  publish-latest:
-    runs-on: ubuntu-latest
-
-    jobs:
   build-and-publish-latest:
     runs-on: ubuntu-latest
     steps:
