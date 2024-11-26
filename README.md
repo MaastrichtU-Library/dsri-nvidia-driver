@@ -6,7 +6,7 @@ Adapted from https://gitlab.com/container-toolkit-fcos/driver
 
 ## Build updated
 
-[![Publish Docker image](https://github.com/seunAdeks/cellprofiler/workflows/Publish%20Docker%20image/badge.svg)](https://github.com/seunAdeks/cellprofiler/actions)
+[![Publish Docker image](https://github.com/MaastrichtU-Library/dsri-nvidia-driver/workflows/Publish%20Docker%20image/badge.svg)](https://github.com/MaastrichtU-Library/dsri-nvidia-driver/actions)
 
 ## Run
 
