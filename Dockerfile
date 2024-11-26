@@ -110,10 +110,10 @@ COPY --from=build /work/vgpu-util /usr/local/bin
 
 WORKDIR /drivers
 
-ARG PUBLIC_KEY=empty
-COPY ${PUBLIC_KEY} kernel/pubkey.x509
+#ARG PUBLIC_KEY=empty
+#COPY ${PUBLIC_KEY} kernel/pubkey.x509
 
-ARG PRIVATE_KEY
+#ARG PRIVATE_KEY
 ARG KERNEL_VERSION=latest
 
 LABEL io.k8s.display-name="NVIDIA Driver Container"
