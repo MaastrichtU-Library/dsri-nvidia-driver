@@ -3,7 +3,7 @@ ARG FEDORA_VERSION=38
 
 FROM nvcr.io/nvidia/cuda:12.6.1-base-ubi8 as build
 
-ARG TARGETARCH
+ARG TARGETARCH=550.127.08
 
 SHELL ["/bin/bash", "-c"]
 
@@ -77,6 +77,7 @@ RUN sh /tmp/install.sh depinstall && \
 ADD drivers drivers/
 
 # Fetch the installer automatically for passthrough/baremetal types
+RUN echo $BASE_URL/$DRIVER_VERSION/NVIDIA-Linux-$DRIVER_ARCH-$DRIVER_VERSION.run
 RUN if [ "$DRIVER_TYPE" != "vgpu" ]; then \
     cd drivers && \
     DRIVER_ARCH=${TARGETARCH/amd64/x86_64} && DRIVER_ARCH=${DRIVER_ARCH/arm64/aarch64} && \
