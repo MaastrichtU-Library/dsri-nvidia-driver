@@ -1,4 +1,4 @@
-ARG FEDORA_VERSION=36
+ARG FEDORA_VERSION=38
 
 
 FROM nvcr.io/nvidia/cuda:12.6.1-base-ubi8 as build
