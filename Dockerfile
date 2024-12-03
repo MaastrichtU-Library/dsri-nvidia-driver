@@ -100,7 +100,7 @@ RUN if [ "$DRIVER_TYPE" != "vgpu" ]; then \
 #     dnf module enable -y nvidia-driver:${DRIVER_BRANCH} && \
 #     dnf install -y ${fmPackage} ${nscqPackage}; fi
 
-COPY nvidia-driver /usr/local/bin
+COPY nvidia-driver.sh /usr/local/bin/nvidia-driver.sh
 
 WORKDIR /usr/src/nvidia-$DRIVER_VERSION
 
@@ -138,4 +138,4 @@ RUN if [ -n "${CVE_UPDATES}" ]; then \
 # Remove cuda repository to avoid GPG errors
 RUN rm -f /etc/yum.repos.d/cuda.repo
 
-ENTRYPOINT ["nvidia-driver", "init"]
+ENTRYPOINT ["/usr/local/bin/nvidia-driver.sh", "init"]
