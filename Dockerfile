@@ -77,7 +77,7 @@ RUN sh /tmp/install.sh depinstall && \
 ADD drivers drivers/
 
 # Fetch the installer automatically for passthrough/baremetal types
-RUN echo $BASE_URL/$DRIVER_VERSION/NVIDIA-Linux-$DRIVER_ARCH-$DRIVER_VERSION.run
+# RUN echo $BASE_URL/$DRIVER_VERSION/NVIDIA-Linux-$DRIVER_ARCH-$DRIVER_VERSION.run
 RUN if [ "$DRIVER_TYPE" != "vgpu" ]; then \
     cd drivers && \
     DRIVER_ARCH=${TARGETARCH/amd64/x86_64} && DRIVER_ARCH=${DRIVER_ARCH/arm64/aarch64} && \
@@ -100,7 +100,9 @@ RUN if [ "$DRIVER_TYPE" != "vgpu" ]; then \
 #     dnf module enable -y nvidia-driver:${DRIVER_BRANCH} && \
 #     dnf install -y ${fmPackage} ${nscqPackage}; fi
 
-COPY nvidia-driver.sh /usr/local/bin/nvidia-driver.sh
+COPY nvidia-driver /usr/local/bin
+
+RUN cat /usr/local/bin/nvidia-driver
 
 WORKDIR /usr/src/nvidia-$DRIVER_VERSION
 
@@ -138,4 +140,4 @@ RUN if [ -n "${CVE_UPDATES}" ]; then \
 # Remove cuda repository to avoid GPG errors
 RUN rm -f /etc/yum.repos.d/cuda.repo
 
-ENTRYPOINT ["/usr/local/bin/nvidia-driver.sh", "init"]
+ENTRYPOINT ["nvidia-driver", "init"]
