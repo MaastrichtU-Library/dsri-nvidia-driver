@@ -102,6 +102,8 @@ RUN if [ "$DRIVER_TYPE" != "vgpu" ]; then \
 
 COPY nvidia-driver /usr/local/bin
 
+RUN chmod 755 /usr/local/bin/nvidia-driver
+
 RUN cat /usr/local/bin/nvidia-driver
 
 WORKDIR /usr/src/nvidia-$DRIVER_VERSION
