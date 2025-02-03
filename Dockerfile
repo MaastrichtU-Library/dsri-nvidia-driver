@@ -1,4 +1,4 @@
-ARG FEDORA_VERSION=38
+ARG FEDORA_VERSION=39
 
 
 FROM nvcr.io/nvidia/cuda:12.6.1-base-ubi8 as build
@@ -25,7 +25,7 @@ RUN git clone https://github.com/NVIDIA/gpu-driver-container driver && \
     go build -o vgpu-util && \
     mv vgpu-util /work
 
-ARG FEDORA_VERSION=38
+ARG FEDORA_VERSION=39
 
 FROM fedora:${FEDORA_VERSION}
 
@@ -42,7 +42,7 @@ SHELL ["/bin/bash", "-c"]
 #ARG BASE_URL=http://us.download.nvidia.com/XFree86/Linux-x86_64
 ARG BASE_URL=https://us.download.nvidia.com/tesla
 ENV BASE_URL=${BASE_URL}
-ARG DRIVER_VERSION=550.127.08
+ARG DRIVER_VERSION=560.35.03
 ENV DRIVER_VERSION=$DRIVER_VERSION
 
 # Arg to indicate if driver type is either of passthrough/baremetal or vgpu
