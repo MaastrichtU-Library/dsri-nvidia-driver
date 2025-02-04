@@ -1,6 +1,5 @@
 name: Publish Docker image
-# To vemonet GitHub Container Registry
-# https://github.com/orgs/vemonet/packages 
+ 
 on:
   workflow_dispatch:
   push:
